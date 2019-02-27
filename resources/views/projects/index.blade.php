@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
+@extends('layout')
 
-        <h1>Project</h1>
+@section('title', 'Projects')
 
-        @foreach ($projects as $project)
-            <li>{{ $project->title }}</li>
-        @endforeach
+@section('content')
 
-    </body>
-</html>
+    <h1 class="title">Project</h1>
+
+    @foreach ($projects as $project)
+        <li>{{ $project->title }}</li>
+    @endforeach
+
+@endsection

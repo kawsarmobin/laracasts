@@ -1,19 +1,21 @@
 @extends('layout')
 
-@section('title', 'Projects')
+@section('title')
+    {{ $project->title }}
+@endsection
 
 @section('content')
 
-    <h1 class="title">Create a new project</h1>
+    <h1 class="title">Edit a project</h1>
 
-    <form class="" action="/projects" method="post">
-        @csrf
+    <form action="/projects/{{ $project->id }}" method="post">
+        @csrf @method('patch')
 
         <div class="field">
             <label class="label" for="title">Title</label>
 
             <div class="control">
-                <input type="text" class="input" name="title" placeholder="title">
+                <input type="text" class="input" name="title" placeholder="title" value="{{ $project->title }}">
             </div>
         </div>
 
@@ -21,7 +23,7 @@
             <label class="label" for="description">Description</label>
 
             <div class="control">
-                <textarea name="description" placeholder="project description" class="textarea" rows="8" cols="80"></textarea>
+                <textarea name="description" placeholder="project description" class="textarea" rows="8" cols="80">{{ $project->description }}</textarea>
             </div>
         </div>
 
