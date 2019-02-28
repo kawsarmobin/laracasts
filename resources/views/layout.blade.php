@@ -5,6 +5,11 @@
       <title>@yield('title', 'Laracast')</title>
       <link rel="shortcut icon" href="{{{ asset('img/favicon.png') }}}">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css">
+      <style media="screen">
+          .is-completed {
+              text-decoration: line-through;
+          }
+      </style>
    </head>
    <body>
 
