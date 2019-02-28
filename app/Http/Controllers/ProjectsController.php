@@ -52,8 +52,9 @@ class ProjectsController extends Controller
         return redirect('/projects');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        // code...
+        $project = Project::findOrFail($id)->delete();
+        return redirect('/projects');
     }
 }

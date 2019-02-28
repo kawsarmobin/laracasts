@@ -13,7 +13,7 @@
             <label class="label" for="title">Title</label>
 
             <div class="control">
-                <input type="text" class="input" name="title" placeholder="title">
+                <input type="text" class="input is-rounded" name="title" placeholder="title">
             </div>
         </div>
 
@@ -25,10 +25,9 @@
             </div>
         </div>
 
-
         <div class="field">
             <div class="control">
-                <button type="submit" name="button">Submit</button>
+                <button type="submit" class="button is-link is-rounded" name="button">Submit</button>
             </div>
         </div>
     </form>

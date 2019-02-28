@@ -20,7 +20,8 @@ Route::get('/', function () {
 // Route::get('/contact', 'PagesController@contact');
 
 // Route::resource('posts', 'PostsController');
-Route::resource('/projects', 'ProjectsController');
+Route::resource('/projects', 'ProjectsController')->except('delete');
+Route::get('/projects/{project}', 'ProjectsController@destroy')->name('projects.destroy');
 
 // Route::get('/projects', 'ProjectsController@index');
 // Route::post('/projects', 'ProjectsController@store');

@@ -8,7 +8,7 @@
 
     <h1 class="title">Edit a project</h1>
 
-    <form action="/projects/{{ $project->id }}" method="post">
+    <form action="/projects/{{ $project->id }}" method="post" style="margin-bottom: 1em">
         @csrf @method('patch')
 
         <div class="field">
@@ -27,12 +27,23 @@
             </div>
         </div>
 
-
-        <div class="field">
-            <div class="control">
-                <button type="submit" name="button">Submit</button>
-            </div>
+        <div class="field is-grouped">
+            <p class="control">
+                <button type="submit" class="button is-link is-rounded" name="button">Update Project</button>
+            </p>
+            <p class="control">
+                <a href="/projects/{{ $project->id }}" class="button is-danger is-rounded">Delete Project</a>
+            </p>
         </div>
     </form>
+
+    {{-- <form class="" action="/projects/{{ $project->id }}" method="post">
+        @csrf @method('DELETE')
+        <div class="field">
+            <p class="control">
+                <button type="submit" class="button is-danger is-rounded" name="button">Delete Project</button>
+            </p>
+        </div>
+    </form> --}}
 
 @endsection
