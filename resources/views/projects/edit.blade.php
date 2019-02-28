@@ -32,7 +32,7 @@
                 <button type="submit" class="button is-link is-rounded" name="button">Update Project</button>
             </p>
             <p class="control">
-                <a href="/projects/{{ $project->id }}" class="button is-danger is-rounded">Delete Project</a>
+                <a href="/projects/{{ $project->id }}/delete" class="button is-danger is-rounded">Delete Project</a>
             </p>
         </div>
     </form>

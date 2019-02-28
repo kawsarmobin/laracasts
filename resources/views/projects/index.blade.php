@@ -4,10 +4,12 @@
 
 @section('content')
 
-    <h1 class="title">Project</h1>
+    <h1 class="title">All Project</h1>
 
-    @foreach ($projects as $project)
-        <li><a href="/projects/{{ $project->id }}/edit">{{ $project->title }}</a></li>
-    @endforeach
+    <ul>
+        @foreach ($projects as $project)
+            <li><a href="/projects/{{ $project->id }}">{{ $project->title }}</a></li>
+        @endforeach
+    </ul>
 
 @endsection

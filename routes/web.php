@@ -15,18 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/', 'PagesController@home');
-// Route::get('/about', 'PagesController@about');
-// Route::get('/contact', 'PagesController@contact');
-
-// Route::resource('posts', 'PostsController');
 Route::resource('/projects', 'ProjectsController')->except('delete');
-Route::get('/projects/{project}', 'ProjectsController@destroy')->name('projects.destroy');
-
-// Route::get('/projects', 'ProjectsController@index');
-// Route::post('/projects', 'ProjectsController@store');
-// Route::get('/projects/create', 'ProjectsController@create');
-// Route::get('/projects/{project}', 'ProjectsController@show');
-// Route::get('/projects/{project}/edit', 'ProjectsController@edit');
-// Route::patch('/projects/{project}', 'ProjectsController@update');
-// Route::delete('/projects/{project}', 'ProjectsController@delete');
+Route::get('/projects/{project}/delete', 'ProjectsController@destroy')->name('projects.destroy');
