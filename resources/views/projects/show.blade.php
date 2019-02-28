@@ -16,20 +16,21 @@
                 <a href="/projects/{{ $project->id }}/edit" class="button is-success is-rounded">Edit Project</a>
             </p>
         </p>
-    </div> <hr>
+    </div>
 
     @if ($project->tasks->count())
-        @foreach ($project->tasks as $task)
-            <div class="">
+        <div class="box">
+            @foreach ($project->tasks as $task)
                 <form class="" action="/tasks/{{ $task->id }}" method="post">
                     @csrf @method('PATCH')
+
                     <label class="checkbox {{ $task->completed ? 'is-completed' : '' }}" for="completed">
                         <input type="checkbox" name="completed" onchange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}>
                         {{ $task->description }}
                     </label>
                 </form>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     @endif
 
 @endsection
