@@ -17,4 +17,10 @@
         </p>
     </div>
 
+    @if ($project->tasks->count())
+        @foreach ($project->tasks as $task)
+            <li>{{ $task->description }}</li>
+        @endforeach
+    @endif
+
 @endsection
