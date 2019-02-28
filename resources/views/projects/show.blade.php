@@ -6,28 +6,15 @@
 
 @section('content')
 
-    <h1 class="title">Show project</h1>
+    <h1 class="title">Show project</h1> <hr>
 
-        <div class="field">
-            <label class="label" for="title">Title</label>
+    <h3 class="label">{{ $project->title }}</h3>
+    <p class="content">{{ $project->description }}</p>
 
-            <div class="control">
-                {{ $project->title }}
-            </div>
-        </div>
-
-        <div class="field">
-            <label class="label" for="description">Description</label>
-
-            <div class="control">
-                {{ $project->description }}
-            </div>
-        </div>
-
-        <div class="field">
-            <p class="control">
-                <a href="/projects/{{ $project->id }}/edit" class="button is-danger is-rounded">Edit Project</a>
-            </p>
-        </div>
+    <div class="field">
+        <p class="control">
+            <a href="/projects/{{ $project->id }}/edit" class="button is-danger is-rounded">Edit Project</a>
+        </p>
+    </div>
 
 @endsection

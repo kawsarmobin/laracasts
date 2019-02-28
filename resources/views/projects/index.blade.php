@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1 class="title">All Project</h1>
+    <h1 class="title">All Project</h1> <hr>
 
     <ul>
         @foreach ($projects as $project)

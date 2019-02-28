@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1 class="title">Create a new project</h1>
+    <h1 class="title">Create a new project</h1> <hr>
 
     <form class="" action="/projects" method="post">
         @csrf
@@ -13,7 +13,7 @@
             <label class="label" for="title">Title</label>
 
             <div class="control">
-                <input type="text" class="input is-rounded" name="title" placeholder="title">
+                <input type="text" class="input is-rounded {{ $errors->has('title') ? 'is-danger' : '' }}" name="title" placeholder="add your new title" value="{{ old('title') }}">
             </div>
         </div>
 
@@ -21,7 +21,7 @@
             <label class="label" for="description">Description</label>
 
             <div class="control">
-                <textarea name="description" placeholder="project description" class="textarea" rows="8" cols="80"></textarea>
+                <textarea name="description" placeholder="write your project description" class="textarea has-fixed-size {{ $errors->has('description') ? 'is-danger' : '' }}" rows="8" cols="80">{{ old('description') }}</textarea>
             </div>
         </div>
 
@@ -30,6 +30,16 @@
                 <button type="submit" class="button is-link is-rounded" name="button">Submit</button>
             </div>
         </div>
+
+        @if ($errors->any())
+            <div class="notification is-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </form>
 
 @endsection
