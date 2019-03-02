@@ -18,4 +18,5 @@ Route::get('/', function () {
 Route::resource('/projects', 'ProjectsController')->except('delete');
 Route::get('/projects/{project}/delete', 'ProjectsController@destroy')->name('projects.destroy');
 
+Route::post('projects/{project}/tasks', 'ProjectTasksController@store');
 Route::patch('tasks/{task}', 'ProjectTasksController@update');
