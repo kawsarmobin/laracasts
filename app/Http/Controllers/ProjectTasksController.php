@@ -10,7 +10,14 @@ class ProjectTasksController extends Controller
 {
     public function store(Project $project)
     {
-        $project->addTask(request('description'));
+        // <!--- method-3 ------!>
+        $attributes = request()->validate(['description' => 'required']);
+        $project->addTask($attributes);
+
+        // <!--- method-2 ------!>
+        // $project->addTask(request('description'));
+
+        // <!--- method-1 ------!>
         // Task::create([
         //     'project_id' => $project->id,
         //     'description' => request('description'),
