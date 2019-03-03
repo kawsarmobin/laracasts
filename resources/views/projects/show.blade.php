@@ -21,8 +21,12 @@
     @if ($project->tasks->count())
         <div class="box">
             @foreach ($project->tasks as $task)
-                <form class="" action="/tasks/{{ $task->id }}" method="post">
-                    @csrf @method('PATCH')
+                <form method="POST" action="/completed-tasks/{{ $task->id }}">
+                    @if ($task->completed)
+                        @method('DELETE')
+                    @endif
+
+                    @csrf
 
                     <label class="checkbox {{ $task->completed ? 'is-completed' : '' }}" for="completed">
                         <input type="checkbox" name="completed" onchange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}>
