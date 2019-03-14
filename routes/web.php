@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/projects', 'ProjectsController')->except('delete');
+Route::resource('/projects', 'ProjectsController')->except('delete')->middleware('can:update,project');
 
 Route::get('/projects/{project}/delete', 'ProjectsController@destroy')->name('projects.destroy');
 

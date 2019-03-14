@@ -56,15 +56,23 @@ class ProjectsController extends Controller
     //     dd($file);
     // }
 
+    /* 
+        abort_if use korbo
+        othoba
+        project policy -- $this->authorize() use korbo
+     */
+
     public function show(Project $project)
     {
         // if ($project->owner_id !== auth()->id()) {
         //     abort(403);
         // }
 
-        abort_if($project->owner_id !== auth()->id(), 403);
+        // abort_if($project->owner_id !== auth()->id(), 403);
 
         // abort_unless(auth()->user()->owns($project), 403);
+
+        // $this->authorize('update', $project);
 
         return view('projects.show', compact('project'));
     }
