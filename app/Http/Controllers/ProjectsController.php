@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use Illuminate\Http\Request;
+use Illuminate\Filesystem\Filesystem;
 
 class ProjectsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $projects = Project::all();
-
+        $projects = Project::where('owner_id', auth()->id())->get();
         return view('projects.index', compact('projects'));
     }
 
@@ -21,18 +26,46 @@ class ProjectsController extends Controller
 
     public function store()
     {
-        $attribute = request()->validate([
+        $attributes = request()->validate([
             'title' => ['required', 'min:3'],
             'description' => ['required', 'min:3'],
         ]);
 
-        Project::create($attribute);
+        /* 
+            System one
+         */
+
+        // $attributes['owner_id'] = auth()->id();
+        // Project::create($attributes); 
+
+        /* 
+            System two
+         */
+
+        Project::create($attributes + ['owner_id' => auth()->id()]);
 
         return redirect('/projects');
     }
 
+    /*
+        Filesystem not understood 
+     */
+
+    // public function show(Filesystem $file)
+    // {
+    //     dd($file);
+    // }
+
     public function show(Project $project)
     {
+        // if ($project->owner_id !== auth()->id()) {
+        //     abort(403);
+        // }
+
+        abort_if($project->owner_id !== auth()->id(), 403);
+
+        // abort_unless(auth()->user()->owns($project), 403);
+
         return view('projects.show', compact('project'));
     }
 

@@ -15,7 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::resource('/projects', 'ProjectsController')->except('delete');
+
 Route::get('/projects/{project}/delete', 'ProjectsController@destroy')->name('projects.destroy');
 
 Route::post('projects/{project}/tasks', 'ProjectTasksController@store');
