@@ -15,8 +15,12 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        $projects = Project::where('owner_id', auth()->id())->get();
-        return view('projects.index', compact('projects'));
+        // $projects = auth()->user()->projects;
+        // $projects = Project::where('owner_id', auth()->id())->get();
+        return view('projects.index', [
+            /* Get all the projects for the auth'd user. */
+            'projects' => auth()->user()->projects,
+        ]);
     }
 
     public function create()
@@ -26,23 +30,20 @@ class ProjectsController extends Controller
 
     public function store()
     {
-        $attributes = request()->validate([
-            'title' => ['required', 'min:3'],
-            'description' => ['required', 'min:3'],
-        ]);
+        $attributes = $this->validateProject();
 
         /* 
-            System one
+         *  System one
          */
 
-        // $attributes['owner_id'] = auth()->id();
-        // Project::create($attributes); 
+        $attributes['owner_id'] = auth()->id();
+        $Project = Project::create($attributes); 
 
         /* 
-            System two
+         *  System two
          */
 
-        Project::create($attributes + ['owner_id' => auth()->id()]);
+        // Project::create($attributes + ['owner_id' => auth()->id()]);
 
         return redirect('/projects');
     }
@@ -57,9 +58,9 @@ class ProjectsController extends Controller
     // }
 
     /* 
-        abort_if use korbo
-        othoba
-        project policy -- $this->authorize() use korbo
+     *  abort_if use korbo
+     *  othoba
+     *  project policy -- $this->authorize() use korbo
      */
 
     public function show(Project $project)
@@ -84,7 +85,7 @@ class ProjectsController extends Controller
 
     public function update(Project $project)
     {
-        $project->update(request(['title', 'description']));
+        $project->update($this->validateProject());
 
         return redirect('/projects');
     }
@@ -94,5 +95,13 @@ class ProjectsController extends Controller
         $project->delete();
 
         return redirect('/projects');
+    }
+
+    public function validateProject()
+    {
+        return request()->validate([
+            'title' => ['required', 'min:3'],
+            'description' => ['required', 'min:3'],
+        ]);
     }
 }

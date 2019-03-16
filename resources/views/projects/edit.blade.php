@@ -35,6 +35,16 @@
                 <a href="/projects/{{ $project->id }}/delete" class="button is-danger is-rounded">Delete Project</a>
             </p>
         </div>
+
+        @if ($errors->any())
+            <div class="notification is-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </form>
 
     {{-- <form class="" action="/projects/{{ $project->id }}" method="post">
