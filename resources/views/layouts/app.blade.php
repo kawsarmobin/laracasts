@@ -83,9 +83,9 @@
 
         <main class="py-4">
             <ul style="text-align: center; font-size: 25px; text-decoration: none;">
-                <a style="text-decoration: none;" href="/projects/create">Create Project</a>
+                <a style="text-decoration: none;" href="/projects/create"><span style="box-shadow: 10px 20px 30px #888888; padding: 8px; border-radius: 5px;">Create Project</span></a>
                 <b><span style="color: #93C830">|</span></b>
-                <a style="text-decoration: none;" href="/projects">All Project</a>
+                <a style="text-decoration: none;" href="/projects"><span style="box-shadow: 10px 20px 30px #888888; padding: 8px; border-radius: 5px;">All Project</span></a>
             </ul>
 
             <div class="container">
