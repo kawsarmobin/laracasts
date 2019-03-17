@@ -8,11 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}"> 
     
-    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-
-    <title>
-        @yield('title', 'Laracast')
-    </title>
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Custom title styles --> --}}
+    <title> @yield('title', 'Laracast') </title>
 
     <link rel="shortcut icon" href="{{{ asset('img/favicon.png') }}}">
 
@@ -91,9 +89,7 @@
             <div class="container">
                 @yield('content')
             </div>
-
         </main>
-
     </div>
 </body>
 
