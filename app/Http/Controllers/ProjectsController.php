@@ -46,6 +46,8 @@ class ProjectsController extends Controller
 
         // Project::create($attributes + ['owner_id' => auth()->id()]);
 
+        flash('Project has been submitted.');
+
         return redirect('/projects');
     }
 
